@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="UTF-8">
+  <title>Result Page</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  {% if data is none %}
+    <meta http-equiv="refresh" content="10" />
+  {% endif %}
+</head>
+
+<body>
+  <div class="table-users">
+   <div class="header">
+   </div>
+      <h2> {{data['Title']}} </h2>
+      <table class="table table-striped" cellspacing="0" style="width:100%">
+          <tr>
+<!--              </td width="10%"><b>Title</b></td>-->
+            <td width="40%"><b>Summary</b></td>
+            <td width="40%"><b>References</b></td>
+            <td width="20%"><b>Images</b></td>
+
+      </tr>
+          <tr>
+<!--            <td width="10%">{{data['Title']}}</td>-->
+            <td width="40%">{{data['Summary']}}</td>
+              <td width="40%">
+              {% for link in reference_links %}
+                  <a href={{link}}>{{link}}</a> <br>
+              {% endfor %}
+                  </td>
+               <td width="20%">
+              {% for image in decoded_images_list %}
+           <img src={{image}}><br>
+              {% endfor %}
+                   </td>
+      </tr>
+      </table>
+   </div>
+</body>
+</html>
